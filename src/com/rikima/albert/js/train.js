@@ -3,8 +3,12 @@ importPackage(java.io);
 load('FeatureVector.js');
 load('L1SVM.js');
 
-br=BufferedReader( InputStreamReader( FileInputStream("/home/rikitoku/workspace//jsclassifier/data/a9a.svmdata") ) );
-
+//br=BufferedReader( InputStreamReader( FileInputStream("../../../../../data/arow_train.svmdata") ) );
+//br=BufferedReader( InputStreamReader( FileInputStream("../../../../../data/a9a.svmdata") ) );
+//br=BufferedReader( InputStreamReader( FileInputStream("../../../../../data/news20.binary/test.svmdata") ) );
+//br=BufferedReader( InputStreamReader( FileInputStream("../../../../../data/news20.binary/train1-3.svmdata") ) );
+//br=BufferedReader( InputStreamReader( FileInputStream("../../../../../data/news20.binary/train2-3.svmdata") ) );
+br=BufferedReader( InputStreamReader( FileInputStream("../../../../../data/news20.binary/train3-3.svmdata") ) );
 
 fvs = []
 while( line= br.readLine() ){
@@ -21,7 +25,7 @@ while( line= br.readLine() ){
 	var ss2 = s.split(':')
 	if (ss2.length == 2) {
 	    var f = ss2[0];
-	    var v = parseInt(ss2[1]);
+	    var v = parseFloat(ss2[1]);
 
 	    if (fv.features[f] == undefined) {
 		fv.features[f] = 0;	
@@ -90,4 +94,5 @@ for (var i = 0; i < fvs.length;++i) {
     }
 } 
 print('pp', pp, 'pn', pn, 'np', np, 'nn', nn);
+print('acc', (pp+nn)/(pp+pn+np+nn))
 print('#wv', wv.dim());
