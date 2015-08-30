@@ -1,4 +1,4 @@
 jsclassifier
 ============
 
-binary classifier implemented by javascript
+binary classifier implemented with javascript
